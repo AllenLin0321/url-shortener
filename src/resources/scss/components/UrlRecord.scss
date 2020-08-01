@@ -1,0 +1,12 @@
+.url_recoard__col {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  width: 330px;
+  text-align: left;
+}
+
+.ant-table-cell button {
+  padding: 0;
+}

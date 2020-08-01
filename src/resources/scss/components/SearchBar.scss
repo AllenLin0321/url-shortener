@@ -1,0 +1,10 @@
+.search-bar__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  .search-bar__input {
+    width: 50%;
+    margin-right: 1rem;
+  }
+}

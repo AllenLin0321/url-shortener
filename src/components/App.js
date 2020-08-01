@@ -1,14 +1,17 @@
 import React from 'react';
 import SearchBar from './SearchBar';
-import UrlRecaod from './UrlRecaod';
+import UrlRecord from './UrlRecord';
+import { Layout } from 'antd';
 
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <SearchBar UrlRecaod={UrlRecaod} />
-        <UrlRecaod />
-      </div>
+      <Layout>
+        <Layout.Content>
+          <SearchBar />
+          <UrlRecord />
+        </Layout.Content>
+      </Layout>
     );
   }
 }
