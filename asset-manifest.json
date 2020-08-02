@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/url-shortener/static/css/main.eae42496.chunk.css",
+    "main.js": "/url-shortener/static/js/main.1e5592b3.chunk.js",
+    "main.js.map": "/url-shortener/static/js/main.1e5592b3.chunk.js.map",
+    "runtime-main.js": "/url-shortener/static/js/runtime-main.7d8c650d.js",
+    "runtime-main.js.map": "/url-shortener/static/js/runtime-main.7d8c650d.js.map",
+    "static/css/2.c8fdb744.chunk.css": "/url-shortener/static/css/2.c8fdb744.chunk.css",
+    "static/js/2.952efa18.chunk.js": "/url-shortener/static/js/2.952efa18.chunk.js",
+    "static/js/2.952efa18.chunk.js.map": "/url-shortener/static/js/2.952efa18.chunk.js.map",
+    "index.html": "/url-shortener/index.html",
+    "precache-manifest.9c2643e3b029efc9d6d83788ae8fb873.js": "/url-shortener/precache-manifest.9c2643e3b029efc9d6d83788ae8fb873.js",
+    "service-worker.js": "/url-shortener/service-worker.js",
+    "static/css/2.c8fdb744.chunk.css.map": "/url-shortener/static/css/2.c8fdb744.chunk.css.map",
+    "static/css/main.eae42496.chunk.css.map": "/url-shortener/static/css/main.eae42496.chunk.css.map",
+    "static/js/2.952efa18.chunk.js.LICENSE.txt": "/url-shortener/static/js/2.952efa18.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7d8c650d.js",
+    "static/css/2.c8fdb744.chunk.css",
+    "static/js/2.952efa18.chunk.js",
+    "static/css/main.eae42496.chunk.css",
+    "static/js/main.1e5592b3.chunk.js"
+  ]
+}
