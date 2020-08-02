@@ -5,7 +5,6 @@ import { getUrlEncodeId } from '../utils/';
 import {
   QrcodeOutlined,
   FileImageOutlined,
-  EditTwoTone,
   LoadingOutlined,
   PlusOutlined,
 } from '@ant-design/icons';
@@ -15,15 +14,8 @@ function getBase64(img, callback) {
   reader.addEventListener('load', () => callback(reader.result));
   reader.readAsDataURL(img);
 }
-
 class UrlDrawer extends React.Component {
-  state = { title: '' };
-
-  onUpdateTitle = e => {
-    // TODO: 更新Title
-    console.log(e.target.value);
-  };
-
+  state = { loading: false };
   beforeUpload = file => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
     if (!isJpgOrPng) {
@@ -72,16 +64,6 @@ class UrlDrawer extends React.Component {
         visible={this.props.drawerVisible}
       >
         <Form>
-          <Form.Item label="網址標題:">
-            <Input
-              value={this.state.title}
-              placeholder="請輸入網址標題"
-              bordered={false}
-              prefix={<EditTwoTone twoToneColor="#52c41a" />}
-              onChange={e => this.setState({ title: e.target.value })}
-              onBlur={this.onUpdateTitle}
-            />
-          </Form.Item>
           <Form.Item label="原始網址:">
             <Input disabled defaultValue={selectedUrlData.originUrl} />
           </Form.Item>

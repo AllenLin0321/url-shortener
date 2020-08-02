@@ -22,13 +22,6 @@ class UrlRecaod extends React.Component {
 
   columns = [
     {
-      title: '網址標題',
-      key: 'title',
-      render: () => {
-        return <p>無標題</p>;
-      },
-    },
-    {
       title: '網址縮圖',
       key: 'image',
       dataIndex: 'imageUrl',

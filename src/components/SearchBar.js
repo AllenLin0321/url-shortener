@@ -30,8 +30,7 @@ class SearchBar extends React.Component {
     try {
       const { data } = await apiGetUrl({
         url: this.state.originUrl,
-        imageUrl:
-          'https://www.mirrormedia.com.tw/assets/images/20200417112422-a84badb70247192d54e5f63ae27123f8-tablet.jpg',
+        imageUrl: 'https://picsee.io/_nuxt/img/logo-dark.89405c6.png',
       });
       this.setState({
         picseeUrl: data.data.picseeUrl,
