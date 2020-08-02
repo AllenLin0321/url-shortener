@@ -17,3 +17,8 @@ export const validURL = str => {
   ); // fragment locator
   return !!pattern.test(str);
 };
+
+export const getUrlEncodeId = url => {
+  const picseeUrl = new URL(url);
+  return picseeUrl.pathname.substring(1); //去斜線
+};

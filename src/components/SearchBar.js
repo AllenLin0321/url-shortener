@@ -26,38 +26,37 @@ class SearchBar extends React.Component {
       return;
     }
     this.setState({ submitBtnLoading: true });
-    const requestData = {
-      url: this.state.originUrl,
-      applyDomain: true,
-      title: ' PicSee ',
-      description: '2016-11-02 14:58 ',
-      imageUrl: 'http://uc.udn.com.tw/photo/2016/11/02/6/2786468.jpg',
-      pathFormat: {
-        key: 'from',
-      },
-    };
-    const { data } = await apiGetUrl(requestData);
-    this.setState({
-      picseeUrl: data.data.picseeUrl,
-      modalVisible: true,
-      submitBtnLoading: false,
-    });
-    this.props.setUrlList([
-      {
+
+    try {
+      const { data } = await apiGetUrl({
+        url: this.state.originUrl,
+        imageUrl:
+          'https://www.mirrormedia.com.tw/assets/images/20200417112422-a84badb70247192d54e5f63ae27123f8-tablet.jpg',
+      });
+      this.setState({
+        picseeUrl: data.data.picseeUrl,
+        modalVisible: true,
+      });
+
+      const storeData = {
         originUrl: this.state.originUrl,
         picseeUrl: data.data.picseeUrl,
-      },
-    ]);
+        imageUrl: data.meta.request.query.imageUrl || '',
+      };
+      this.props.setUrlList([storeData]);
 
-    onCopyUrl(data.data.picseeUrl);
-    this.onStoreUrl();
+      onCopyUrl(data.data.picseeUrl);
+      this.onStoreUrl(storeData);
+    } catch (error) {
+      message.error(error.response.data.error.message);
+    } finally {
+      this.setState({ submitBtnLoading: false });
+    }
   };
 
-  onStoreUrl = () => {
+  onStoreUrl = storeData => {
     const currentUrlArr = JSON.parse(localStorage.getItem('url'));
-    let newUrlArr = [
-      { originUrl: this.state.originUrl, picseeUrl: this.state.picseeUrl },
-    ];
+    let newUrlArr = [storeData];
 
     if (currentUrlArr) {
       newUrlArr = [...currentUrlArr, ...newUrlArr];

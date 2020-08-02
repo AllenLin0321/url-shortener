@@ -1,4 +1,4 @@
-.url_recoard__col {
+.url_record__col {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -7,6 +7,10 @@
   text-align: left;
 }
 
-.ant-table-cell button {
+.ant-table-cell .url-record__row-btn {
   padding: 0;
+}
+
+.ant-empty.ant-empty-normal {
+  margin: 0;
 }
