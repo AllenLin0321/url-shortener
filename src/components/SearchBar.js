@@ -3,6 +3,10 @@ import { Input, Button, message } from 'antd';
 import { apiGetUrl } from '../api/index';
 import UrlModal from './UrlModal';
 import { RobotOutlined } from '@ant-design/icons';
+import { validURL, onCopyUrl } from '../utils/index';
+// Redux
+import { connect } from 'react-redux';
+import { setUrlList } from '../stores/actions';
 
 class SearchBar extends React.Component {
   state = {
@@ -12,30 +16,12 @@ class SearchBar extends React.Component {
     modalVisible: false,
   };
 
-  onCopyUrl = url => {
-    navigator.clipboard.writeText(url);
-    message.success(`${url} copied 🎉`);
-  };
-
-  validURL = str => {
-    var pattern = new RegExp(
-      '^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-        '(\\#[-a-z\\d_]*)?$',
-      'i'
-    ); // fragment locator
-    return !!pattern.test(str);
-  };
-
   onInputChange = event => {
     this.setState({ originUrl: event.target.value });
   };
 
   onFetchUrl = async () => {
-    if (!this.validURL(this.state.originUrl)) {
+    if (!validURL(this.state.originUrl)) {
       message.error('Not a valid URL');
       return;
     }
@@ -56,7 +42,14 @@ class SearchBar extends React.Component {
       modalVisible: true,
       submitBtnLoading: false,
     });
-    this.onCopyUrl(data.data.picseeUrl);
+    this.props.setUrlList([
+      {
+        originUrl: this.state.originUrl,
+        picseeUrl: data.data.picseeUrl,
+      },
+    ]);
+
+    onCopyUrl(data.data.picseeUrl);
     this.onStoreUrl();
   };
 
@@ -116,4 +109,8 @@ class SearchBar extends React.Component {
   }
 }
 
-export default SearchBar;
+const mapStateToProps = state => {
+  return { urlList: state.urlList };
+};
+
+export default connect(mapStateToProps, { setUrlList })(SearchBar);

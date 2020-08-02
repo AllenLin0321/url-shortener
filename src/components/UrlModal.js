@@ -1,14 +1,11 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
-import { message, Modal, Button, Row, Col } from 'antd';
-import { CopyTwoTone } from '@ant-design/icons';
+import { Modal, Button, Row, Col, Input } from 'antd';
+import { onCopyUrl } from '../utils/index';
+import { CopyTwoTone, EditTwoTone } from '@ant-design/icons';
 import LineShareLogo from '../resources/image/wide-defualt.png';
-class UrlModal extends React.Component {
-  onCopyUrl = url => {
-    navigator.clipboard.writeText(url);
-    message.success(`${url} copied 🎉`);
-  };
 
+class UrlModal extends React.Component {
   render() {
     return (
       <>
@@ -31,14 +28,20 @@ class UrlModal extends React.Component {
               <QRCode value={this.props.picseeUrl} />
             </Col>
             <Col span={16}>
+              <Input
+                placeholder="短網址名稱"
+                bordered={false}
+                prefix={<EditTwoTone twoToneColor="#52c41a" />}
+              />
+
               <p>原始網址: {this.props.originUrl}</p>
               <p>
                 縮網址: {this.props.picseeUrl}
                 <span
                   style={{ cursor: 'pointer' }}
-                  onClick={() => this.onCopyUrl(this.props.picseeUrl)}
+                  onClick={() => onCopyUrl(this.props.picseeUrl)}
                 >
-                  <CopyTwoTone />
+                  <CopyTwoTone style={{ marginLeft: '10px' }} />
                 </span>
               </p>
             </Col>
