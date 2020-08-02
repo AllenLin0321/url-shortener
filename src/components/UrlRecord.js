@@ -27,16 +27,14 @@ class UrlRecaod extends React.Component {
       dataIndex: 'imageUrl',
       align: 'center',
       render: imageUrl => {
-        if (!imageUrl) {
-          return (
-            <Empty
-              image={Empty.PRESENTED_IMAGE_SIMPLE}
-              imageStyle={{ width: '128px' }}
-            />
-          );
-        }
-
-        return <img style={{ width: '128px' }} src={imageUrl} />;
+        return imageUrl ? (
+          <img style={{ width: '128px' }} src={imageUrl} alt="image" />
+        ) : (
+          <Empty
+            image={Empty.PRESENTED_IMAGE_SIMPLE}
+            imageStyle={{ width: '128px' }}
+          />
+        );
       },
     },
     {

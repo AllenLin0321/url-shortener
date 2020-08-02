@@ -1,6 +1,6 @@
 import React from 'react';
 import QRCode from 'qrcode.react';
-import { Modal, Button, Row, Col, Input } from 'antd';
+import { Modal, Button, Row, Col } from 'antd';
 import { onCopyUrl } from '../utils/index';
 import { CopyTwoTone } from '@ant-design/icons';
 import LineShareLogo from '../resources/image/wide-defualt.png';

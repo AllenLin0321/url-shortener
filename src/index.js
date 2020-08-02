@@ -4,7 +4,7 @@ import App from './components/App';
 
 // Redux
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, compose } from 'redux';
 import reducers from './stores/reducer/index';
 
 // StyleSheet
